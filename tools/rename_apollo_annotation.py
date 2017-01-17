@@ -7,48 +7,13 @@ import re
 
 ######################################
 ##
-## USAGE: python rename-_apollo_annotation.py apollo.gff output.gff
+## USAGE: python rename_apollo_annotation.py apollo.gff output.gff
 ##
 #####################################
 
 
 gff_file = sys.argv[1]
 output_file = sys.argv[2]
-
-
-def rev_comp(seq): 
-    revcompl = lambda x: ''.join([{'N':'N','A':'T','C':'G','G':'C','T':'A'}[B] for B in x][::-1])
-    return revcompl(seq)
-
-def get_mRNA(position_list, seq): 
-    """
-    given sequence, list of tuples of start and end positions of exons and gene name, create fasta output
-    """
-    mRNA = ""
-    for start, end in position_list: 
-        mRNA += seq[int(start):int(end)]
-
-    return mRNA
-
-
-def fasta_iter(fasta_name):
-        """
-        given a fasta file. yield tuples of header, sequence
-        """
-                    
-        fh = open(fasta_name)
-        # ditch the boolean (x[0]) and just keep the header or sequence since
-        # we know they alternate.
-        fa_list = []
-        faiter = (x[1] for x in groupby(fh, lambda line: line[0] == ">"))
-        for header in faiter:
-            # drop the ">"
-            header = header.next()[1:].strip()
-            # join all sequence lines to one.
-            seq = "".join(s.strip() for s in faiter.next())
-            fa_list.append((header, seq))
-        #yield header, seq
-        return fa_list
 
 
 
