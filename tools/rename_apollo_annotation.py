@@ -7,13 +7,13 @@ import re
 
 ######################################
 ##
-## USAGE: python extract_mRNA.py file.gff file.fasta outputfile.fasta
+## USAGE: python rename-_apollo_annotation.py apollo.gff output.gff
 ##
 #####################################
 
 
 gff_file = sys.argv[1]
-output_file = "t" #sys.argv[2]
+output_file = sys.argv[2]
 
 
 def rev_comp(seq): 
