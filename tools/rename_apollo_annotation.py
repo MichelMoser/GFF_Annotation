@@ -8,7 +8,7 @@ import re
 ######################################
 ##
 ## USAGE: python rename_apollo_annotation.py apollo.gff output.gff
-##
+## Author: Michel Moser
 #####################################
 
 
